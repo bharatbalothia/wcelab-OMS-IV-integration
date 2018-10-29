@@ -1,0 +1,1244 @@
+{
+	"info": {
+		"_postman_id": "c45aca08-e16f-4631-9b25-533fb07dcb80",
+		"name": "IV Quick Start",
+		"description": "#IV Quick Start collection\n\nCheck the \"Variables\" tab of the collectiont to validate if those vairables are correct. ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "10 Get Bearer Tokens",
+			"item": [
+				{
+					"name": "ShipNodes - Get and Set Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f0810256-4303-45c0-b808-8edcf56b9b4e",
+								"exec": [
+									"var TOKEN_NAME = \"bearerToken_shipnodes\";",
+									"",
+									"var responseData = JSON.parse(responseBody);",
+									"",
+									"var tokenValue = responseData.access_token;",
+									"",
+									"pm.environment.unset(TOKEN_NAME);",
+									"",
+									"pm.environment.set(TOKEN_NAME, tokenValue);",
+									"",
+									"console.log(\"set \" + TOKEN_NAME + \" to: \" + pm.variables.get(TOKEN_NAME));",
+									"",
+									"// Test if we got 200 as response code",
+									"pm.test(\"POST response code check\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});",
+									"",
+									"// Test if token is null",
+									"pm.test(TOKEN_NAME + \" null check\", function () {",
+									"    pm.expect(tokenValue).not.eql(null);",
+									"});",
+									"",
+									"// Test if token is a long enough string",
+									"pm.test(TOKEN_NAME + \" length check\" , function () {",
+									"    pm.expect(pm.variables.get(TOKEN_NAME)).length.to.be.above(24);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/shipNodes/{{tokenUrlPostfix}}",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"shipNodes",
+								"{{tokenUrlPostfix}}"
+							]
+						},
+						"description": "# Authentication\n\nUsing the supplies API to get authentication."
+					},
+					"response": []
+				},
+				{
+					"name": "Supplies - Get and Set Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f0810256-4303-45c0-b808-8edcf56b9b4e",
+								"exec": [
+									"var TOKEN_NAME = \"bearerToken_supplies\";",
+									"",
+									"var responseData = JSON.parse(responseBody);",
+									"",
+									"var tokenValue = responseData.access_token;",
+									"",
+									"pm.environment.unset(TOKEN_NAME);",
+									"",
+									"pm.environment.set(TOKEN_NAME, tokenValue);",
+									"",
+									"console.log(\"set \" + TOKEN_NAME + \" to: \" + pm.variables.get(TOKEN_NAME));",
+									"",
+									"// Test if we got 200 as response code",
+									"pm.test(\"POST response code check\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});",
+									"",
+									"// Test if token is null",
+									"pm.test(TOKEN_NAME + \" null check\", function () {",
+									"    pm.expect(tokenValue).not.eql(null);",
+									"});",
+									"",
+									"// Test if token is a long enough string",
+									"pm.test(TOKEN_NAME + \" length check\" , function () {",
+									"    pm.expect(pm.variables.get(TOKEN_NAME)).length.to.be.above(24);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/supplies/{{tokenUrlPostfix}}",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"supplies",
+								"{{tokenUrlPostfix}}"
+							]
+						},
+						"description": "# Authentication\n\nUsing the supplies API to get authentication."
+					},
+					"response": []
+				},
+				{
+					"name": "Demands- Get and Set Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f0810256-4303-45c0-b808-8edcf56b9b4e",
+								"exec": [
+									"var TOKEN_NAME = \"bearerToken_demands\";",
+									"",
+									"var responseData = JSON.parse(responseBody);",
+									"",
+									"var tokenValue = responseData.access_token;",
+									"",
+									"pm.environment.unset(TOKEN_NAME);",
+									"",
+									"pm.environment.set(TOKEN_NAME, tokenValue);",
+									"",
+									"console.log(\"set \" + TOKEN_NAME + \" to: \" + pm.variables.get(TOKEN_NAME));",
+									"",
+									"// Test if we got 200 as response code",
+									"pm.test(\"POST response code check\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});",
+									"",
+									"// Test if token is null",
+									"pm.test(TOKEN_NAME + \" null check\", function () {",
+									"    pm.expect(tokenValue).not.eql(null);",
+									"});",
+									"",
+									"// Test if token is a long enough string",
+									"pm.test(TOKEN_NAME + \" length check\" , function () {",
+									"    pm.expect(pm.variables.get(TOKEN_NAME)).length.to.be.above(24);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/demands/{{tokenUrlPostfix}}",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"demands",
+								"{{tokenUrlPostfix}}"
+							]
+						},
+						"description": "# Authentication\n\nUsing the supplies API to get authentication."
+					},
+					"response": []
+				},
+				{
+					"name": "Availability - Get and Set Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f0810256-4303-45c0-b808-8edcf56b9b4e",
+								"exec": [
+									"var TOKEN_NAME = \"bearerToken_availability\";",
+									"",
+									"var responseData = JSON.parse(responseBody);",
+									"",
+									"var tokenValue = responseData.access_token;",
+									"",
+									"pm.environment.unset(TOKEN_NAME);",
+									"",
+									"pm.environment.set(TOKEN_NAME, tokenValue);",
+									"",
+									"console.log(\"set \" + TOKEN_NAME + \" to: \" + pm.variables.get(TOKEN_NAME));",
+									"",
+									"// Test if we got 200 as response code",
+									"pm.test(\"POST response code check\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});",
+									"",
+									"// Test if token is null",
+									"pm.test(TOKEN_NAME + \" null check\", function () {",
+									"    pm.expect(tokenValue).not.eql(null);",
+									"});",
+									"",
+									"// Test if token is a long enough string",
+									"pm.test(TOKEN_NAME + \" length check\" , function () {",
+									"    pm.expect(pm.variables.get(TOKEN_NAME)).length.to.be.above(24);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/availability/node/{{tokenUrlPostfix}}",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"availability",
+								"node",
+								"{{tokenUrlPostfix}}"
+							]
+						},
+						"description": "# Authentication\n\nUsing the supplies API to get authentication."
+					},
+					"response": []
+				},
+				{
+					"name": "DistributionGroups - Get and Set Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f0810256-4303-45c0-b808-8edcf56b9b4e",
+								"exec": [
+									"var TOKEN_NAME = \"bearerToken_distributionGroups\";",
+									"",
+									"var responseData = JSON.parse(responseBody);",
+									"",
+									"var tokenValue = responseData.access_token;",
+									"",
+									"pm.environment.unset(TOKEN_NAME);",
+									"",
+									"pm.environment.set(TOKEN_NAME, tokenValue);",
+									"",
+									"console.log(\"set \" + TOKEN_NAME + \" to: \" + pm.variables.get(TOKEN_NAME));",
+									"",
+									"// Test if we got 200 as response code",
+									"pm.test(\"POST response code check\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});",
+									"",
+									"// Test if token is null",
+									"pm.test(TOKEN_NAME + \" null check\", function () {",
+									"    pm.expect(tokenValue).not.eql(null);",
+									"});",
+									"",
+									"// Test if token is a long enough string",
+									"pm.test(TOKEN_NAME + \" length check\" , function () {",
+									"    pm.expect(pm.variables.get(TOKEN_NAME)).length.to.be.above(24);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroups/{{tokenUrlPostfix}}",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"distributionGroups",
+								"{{tokenUrlPostfix}}"
+							]
+						},
+						"description": "# Authentication\n\nUsing the supplies API to get authentication."
+					},
+					"response": []
+				},
+				{
+					"name": "Reservations - Get and Set Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f0810256-4303-45c0-b808-8edcf56b9b4e",
+								"exec": [
+									"var TOKEN_NAME = \"bearerToken_reservations\";",
+									"",
+									"var responseData = JSON.parse(responseBody);",
+									"",
+									"var tokenValue = responseData.access_token;",
+									"",
+									"pm.environment.unset(TOKEN_NAME);",
+									"",
+									"pm.environment.set(TOKEN_NAME, tokenValue);",
+									"",
+									"console.log(\"set \" + TOKEN_NAME + \" to: \" + pm.variables.get(TOKEN_NAME));",
+									"",
+									"// Test if we got 200 as response code",
+									"pm.test(\"POST response code check\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});",
+									"",
+									"// Test if token is null",
+									"pm.test(TOKEN_NAME + \" null check\", function () {",
+									"    pm.expect(tokenValue).not.eql(null);",
+									"});",
+									"",
+									"// Test if token is a long enough string",
+									"pm.test(TOKEN_NAME + \" length check\" , function () {",
+									"    pm.expect(pm.variables.get(TOKEN_NAME)).length.to.be.above(24);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/reservations/{{tokenUrlPostfix}}",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"reservations",
+								"{{tokenUrlPostfix}}"
+							]
+						},
+						"description": "# Authentication\n\nUsing the supplies API to get authentication."
+					},
+					"response": []
+				},
+				{
+					"name": "Thresholds - Get and Set Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f0810256-4303-45c0-b808-8edcf56b9b4e",
+								"exec": [
+									"var TOKEN_NAME = \"bearerToken_thresholds\";",
+									"",
+									"var responseData = JSON.parse(responseBody);",
+									"",
+									"var tokenValue = responseData.access_token;",
+									"",
+									"pm.environment.unset(TOKEN_NAME);",
+									"",
+									"pm.environment.set(TOKEN_NAME, tokenValue);",
+									"",
+									"console.log(\"set \" + TOKEN_NAME + \" to: \" + pm.variables.get(TOKEN_NAME));",
+									"",
+									"// Test if we got 200 as response code",
+									"pm.test(\"POST response code check\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});",
+									"",
+									"// Test if token is null",
+									"pm.test(TOKEN_NAME + \" null check\", function () {",
+									"    pm.expect(tokenValue).not.eql(null);",
+									"});",
+									"",
+									"// Test if token is a long enough string",
+									"pm.test(TOKEN_NAME + \" length check\" , function () {",
+									"    pm.expect(pm.variables.get(TOKEN_NAME)).length.to.be.above(24);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/thresholds/{{tokenUrlPostfix}}",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"thresholds",
+								"{{tokenUrlPostfix}}"
+							]
+						},
+						"description": "# Authentication\n\nUsing the supplies API to get authentication."
+					},
+					"response": []
+				},
+				{
+					"name": "Settings - Get and Set Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f0810256-4303-45c0-b808-8edcf56b9b4e",
+								"exec": [
+									"var TOKEN_NAME = \"bearerToken_settings\";",
+									"",
+									"var responseData = JSON.parse(responseBody);",
+									"",
+									"var tokenValue = responseData.access_token;",
+									"",
+									"pm.environment.unset(TOKEN_NAME);",
+									"",
+									"pm.environment.set(TOKEN_NAME, tokenValue);",
+									"",
+									"console.log(\"set \" + TOKEN_NAME + \" to: \" + pm.variables.get(TOKEN_NAME));",
+									"",
+									"// Test if we got 200 as response code",
+									"pm.test(\"POST response code check\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});",
+									"",
+									"// Test if token is null",
+									"pm.test(TOKEN_NAME + \" null check\", function () {",
+									"    pm.expect(tokenValue).not.eql(null);",
+									"});",
+									"",
+									"// Test if token is a long enough string",
+									"pm.test(TOKEN_NAME + \" length check\" , function () {",
+									"    pm.expect(pm.variables.get(TOKEN_NAME)).length.to.be.above(24);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/settings/{{tokenUrlPostfix}}",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"settings",
+								"{{tokenUrlPostfix}}"
+							]
+						},
+						"description": "# Authentication\n\nUsing the supplies API to get authentication."
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "205d8b14-e156-4337-b487-ba13887b1732",
+						"type": "text/javascript",
+						"exec": [
+							"var hostname = pm.variables.get(\"hostname\");",
+							"var applicationName = pm.variables.get(\"applicationName\");",
+							"var tenantID = pm.variables.get(\"tenantID\");",
+							"var apiVersion = pm.variables.get(\"apiVersion\");",
+							"var clientID = pm.variables.get(\"client_id\");",
+							"var clientSecret = pm.variables.get(\"client_secret\");",
+							"",
+							"var targetUrl = \"https://\" + hostname + \"/\" + applicationName + \"/\" + tenantID + \"/\" + apiVersion + \"/\"",
+							"",
+							"// console.log(\"URL is: \" + targetUrl);",
+							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "62e56448-8179-40da-a19c-9cfd6d00439f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "20 ShipNodes",
+			"item": [
+				{
+					"name": "ShipNode - Set",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_shipnodes}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"latitude\": 32.8867881,\r\n\t\"longitude\": -96.972472\r\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/shipNodes/nztest_dallas_dc",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"shipNodes",
+								"nztest_dallas_dc"
+							]
+						},
+						"description": "Add or Update a ShipNode\t"
+					},
+					"response": []
+				},
+				{
+					"name": "ShipNode - Get Detail (kind of useless)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_shipnodes}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"latitude\": 42.5492895,\r\n\t\"longitude\": -71.4723905\r\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/shipNodes/nztest_littleton_dc",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"shipNodes",
+								"nztest_littleton_dc"
+							]
+						},
+						"description": "Add or Update a ShipNode\t"
+					},
+					"response": []
+				},
+				{
+					"name": "ShipNode - Get List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_shipnodes}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"latitude\": 42.5492895,\r\n\t\"longitude\": -71.4723905\r\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/shipNodes",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"shipNodes"
+							]
+						},
+						"description": "Add or Update a ShipNode\t"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "30 Supplies",
+			"item": [
+				{
+					"name": "Supply - Sync",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_supplies}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"supplies\": [\r\n\t\t{\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT001\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"quantity\": 100.0,\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"nztest_littleton_dc\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t},{\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT002\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"quantity\": 200.0,\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"nztest_littleton_dc\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t},{\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT003\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"quantity\": 300.0,\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"nztest_littleton_dc\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t}\r\n\t\t]\r\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/supplies",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"supplies"
+							]
+						},
+						"description": "#Supply - Sync\n\nSync supply. See Documentation for API Detail\n\nhttps://developer.ibm.com/api/view/inventoryvis-prod:inventory-visibility:title-IBM_Inventory_Visibility_APIs#id76464 "
+					},
+					"response": []
+				},
+				{
+					"name": "Supply - Adjust",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_supplies}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"supplies\": [\r\n\t\t{\r\n\t\t\t\"adjustmentReason\": \"RECEIVING\",\r\n\t\t\t\"changedQuantity\": 999.0,\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT001\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"nztest_littleton_dc\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T10:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t},{\r\n\t\t\t\"adjustmentReason\": \"SHIPMENT\",\r\n\t\t\t\"changedQuantity\": -1.0,\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT002\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"nztest_littleton_dc\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t},{\r\n\t\t\t\"adjustmentReason\": \"SHIPMENT\",\r\n\t\t\t\"changedQuantity\": -1.0,\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT003\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"nztest_littleton_dc\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t}\r\n\t\t]\r\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/supplies",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"supplies"
+							]
+						},
+						"description": "#Supply - Sync\n\nSync supply. See Documentation for API Detail\n\nhttps://developer.ibm.com/api/view/inventoryvis-prod:inventory-visibility:title-IBM_Inventory_Visibility_APIs#id76464 "
+					},
+					"response": []
+				},
+				{
+					"name": "Supply - Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_supplies}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"supplies\": [\r\n\t\t{\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT001\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"quantity\": 100.0,\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"Matrix-Store-001\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t},{\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT002\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"quantity\": 200.0,\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"Matrix-Store-001\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t},{\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT003\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"quantity\": 300.0,\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"Matrix-Store-001\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t}\r\n\t\t]\r\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/supplies?itemId=NZT001&unitOfMeasure=EACH&productClass=NEW&shipNode=nztest_littleton_dc",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"supplies"
+							],
+							"query": [
+								{
+									"key": "itemId",
+									"value": "NZT001"
+								},
+								{
+									"key": "unitOfMeasure",
+									"value": "EACH"
+								},
+								{
+									"key": "productClass",
+									"value": "NEW"
+								},
+								{
+									"key": "shipNode",
+									"value": "nztest_littleton_dc"
+								}
+							]
+						},
+						"description": "#Supply - Sync\n\nSync supply. See Documentation for API Detail\n\nhttps://developer.ibm.com/api/view/inventoryvis-prod:inventory-visibility:title-IBM_Inventory_Visibility_APIs#id76464 "
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "40 Demand",
+			"item": [
+				{
+					"name": "Demand - Adjust",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_demands}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"demands\": [\r\n\t\t{\r\n\t\t\t\"adjustmentReason\": \"PROCSS\",\r\n\t\t\t\"cancelDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"changedQuantity\": -1.0,\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"minShipByDate\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT001\",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipNode\": \"nztest_littleton_dc\",\r\n\t\t\t\"shipDate\": \"2018-10-29T06:00:00Z\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T06:00:00Z\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"OPEN_ORDER\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t},{\r\n\t\t\t\"adjustmentReason\": \"SHIPMENT\",\r\n\t\t\t\"changedQuantity\": -1.0,\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT002\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"nztest_littleton_dc\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t},{\r\n\t\t\t\"adjustmentReason\": \"SHIPMENT\",\r\n\t\t\t\"changedQuantity\": -1.0,\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT003\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"nztest_littleton_dc\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t}\r\n\t\t]\r\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/demands",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"demands"
+							]
+						},
+						"description": "#Supply - Sync\n\nSync supply. See Documentation for API Detail\n\nhttps://developer.ibm.com/api/view/inventoryvis-prod:inventory-visibility:title-IBM_Inventory_Visibility_APIs#id76464 "
+					},
+					"response": []
+				},
+				{
+					"name": "Demand - Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_demands}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"supplies\": [\r\n\t\t{\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT001\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"quantity\": 100.0,\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"Matrix-Store-001\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t},{\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT002\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"quantity\": 200.0,\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"Matrix-Store-001\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t},{\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT003\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"quantity\": 300.0,\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"Matrix-Store-001\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t}\r\n\t\t]\r\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/demands?itemId=NZT001&unitOfMeasure=EACH&productClass=NEW&shipNode=nztest_littleton_dc",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"demands"
+							],
+							"query": [
+								{
+									"key": "itemId",
+									"value": "NZT001"
+								},
+								{
+									"key": "unitOfMeasure",
+									"value": "EACH"
+								},
+								{
+									"key": "productClass",
+									"value": "NEW"
+								},
+								{
+									"key": "shipNode",
+									"value": "nztest_littleton_dc"
+								}
+							]
+						},
+						"description": "#Supply - Sync\n\nSync supply. See Documentation for API Detail\n\nhttps://developer.ibm.com/api/view/inventoryvis-prod:inventory-visibility:title-IBM_Inventory_Visibility_APIs#id76464 "
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "3433357e-b613-4e35-9216-5c66902f2197",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "4a55479e-0e47-4b3a-9cfe-a547ee4c4794",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "3691c14a-2733-4e7e-841d-96052a453cbb",
+			"key": "tenantID",
+			"value": "Enter your tenat ID",
+			"type": "string"
+		},
+		{
+			"id": "7ebbb171-d8b6-4554-bbe5-f3bd8f0a3ba9",
+			"key": "hostname",
+			"value": "eu-api.watsoncommerce.ibm.com",
+			"type": "string"
+		},
+		{
+			"id": "b341a2d1-d563-49a7-8a7a-dff4ddc0f914",
+			"key": "client_id",
+			"value": "Enter your client id",
+			"type": "string"
+		},
+		{
+			"id": "f4dda92d-a084-4e73-8356-894b4ebf4982",
+			"key": "client_secret",
+			"value": "Enter your client secret",
+			"type": "string"
+		},
+		{
+			"id": "fc2ec933-a394-43dc-9ffb-466ea96dbfc2",
+			"key": "applicationName",
+			"value": "inventory",
+			"type": "string"
+		},
+		{
+			"id": "46b6d1f6-89af-44e2-9390-94db17bb07ae",
+			"key": "apiVersion",
+			"value": "v1",
+			"type": "string"
+		},
+		{
+			"id": "9b0a5b5c-7979-41d7-bb25-9b244b39db69",
+			"key": "tokenUrlPostfix",
+			"value": "oauth2/token",
+			"type": "string"
+		}
+	]
+}

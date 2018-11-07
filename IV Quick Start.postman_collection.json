@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c45aca08-e16f-4631-9b25-533fb07dcb80",
+		"_postman_id": "76d53851-04ed-4b4f-98d3-eceb699f6823",
 		"name": "IV Quick Start",
 		"description": "#IV Quick Start collection\n\nCheck the \"Variables\" tab of the collectiont to validate if those vairables are correct. ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -32,7 +32,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"latitude\": 42.5492895,\r\n\t\"longitude\": -71.4723905\r\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/thresholds",
@@ -58,32 +58,32 @@
 			"name": "20 ShipNodes",
 			"item": [
 				{
-					"name": "ShipNode - Set",
+					"name": "ShipNode - Get List",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_shipnodes}}",
+									"value": "{{bearerToken_configuration/shipNodes}}",
 									"type": "string"
 								}
 							]
 						},
-						"method": "PUT",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"latitude\": 32.8867881,\r\n\t\"longitude\": -96.972472\r\n}"
+							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/shipNodes/nztest_dallas_dc",
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/shipNodes",
 							"protocol": "https",
 							"host": [
 								"{{hostname}}"
@@ -93,8 +93,7 @@
 								"{{tenantID}}",
 								"{{apiVersion}}",
 								"configuration",
-								"shipNodes",
-								"nztest_dallas_dc"
+								"shipNodes"
 							]
 						},
 						"description": "Add or Update a ShipNode\t"
@@ -124,7 +123,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"latitude\": 42.5492895,\r\n\t\"longitude\": -71.4723905\r\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/shipNodes/nztest_littleton_dc",
@@ -146,7 +145,7 @@
 					"response": []
 				},
 				{
-					"name": "ShipNode - Get List",
+					"name": "ShipNode - Set",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -154,6 +153,55 @@
 								{
 									"key": "token",
 									"value": "{{bearerToken_configuration/shipNodes}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"latitude\": 25.8867881,\r\n\t\"longitude\": -25.972472\r\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/shipNodes/latest_madrid_dc",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"shipNodes",
+								"latest_madrid_dc"
+							]
+						},
+						"description": "Add or Update a ShipNode\t"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "50 Reservation",
+			"item": [
+				{
+					"name": "Get Reservation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_reservations}}",
 									"type": "string"
 								}
 							]
@@ -168,10 +216,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"latitude\": 42.5492895,\r\n\t\"longitude\": -71.4723905\r\n}"
+							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/shipNodes",
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/reservations?deliveryMethod=SHP&distributionGrouptest_dallas_dg&itemId=NZT001&lineId=1&productClass=NEW&shipNode=latest_madrid_dc",
 							"protocol": "https",
 							"host": [
 								"{{hostname}}"
@@ -180,8 +228,75 @@
 								"{{applicationName}}",
 								"{{tenantID}}",
 								"{{apiVersion}}",
-								"configuration",
-								"shipNodes"
+								"reservations"
+							],
+							"query": [
+								{
+									"key": "deliveryMethod",
+									"value": "SHP"
+								},
+								{
+									"key": "distributionGroup",
+									"value": test_dallas_dg"
+								},
+								{
+									"key": "itemId",
+									"value": "NZT001"
+								},
+								{
+									"key": "lineId",
+									"value": "1"
+								},
+								{
+									"key": "productClass",
+									"value": "NEW"
+								},
+								{
+									"key": "shipNode",
+									"value": "latest_madrid_dc"
+								}
+							]
+						},
+						"description": "Add or Update a ShipNode\t"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Reservation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_reservations}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"lines\": [{\n\t\t\"deliveryMethod\": \"SHP\",\n        \"distributionGroup\": \test_dallas_dg\",\n        \"itemId\": \"NZT001\",\n        \"lineId\": \"1\",\n        \"productClass\": \"NEW\",\n        \"quantity\": 5.0,\n        \"shipNode\": \"latest_madrid_dc\",\n        \"unitOfMeasure\": \"EACH\"\n      }],\n\t\"reference\": \"REF1\",\n\t\"segment\": \" \",\n\t\"segmentType\": \" \",\n\t\"timeToExpire\": 15\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/reservations",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"reservations"
 							]
 						},
 						"description": "Add or Update a ShipNode\t"
@@ -193,6 +308,110 @@
 		{
 			"name": "30 Supplies",
 			"item": [
+				{
+					"name": "Supply - Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_supplies}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/supplies?itemId=NZT001&unitOfMeasure=EACH&productClass=NEW&shipNode=nztest_littleton_dc",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"supplies"
+							],
+							"query": [
+								{
+									"key": "itemId",
+									"value": "NZT001"
+								},
+								{
+									"key": "unitOfMeasure",
+									"value": "EACH"
+								},
+								{
+									"key": "productClass",
+									"value": "NEW"
+								},
+								{
+									"key": "shipNode",
+									"value": "nztest_littleton_dc"
+								}
+							]
+						},
+						"description": "#Supply - Sync\n\nSync supply. See Documentation for API Detail\n\nhttps://developer.ibm.com/api/view/inventoryvis-prod:inventory-visibility:title-IBM_Inventory_Visibility_APIs#id76464 "
+					},
+					"response": []
+				},
+				{
+					"name": "Supply - Adjust",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_supplies}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"supplies\": [\n\t\t{\n\t\t\t\"adjustmentType\": \"ADJUSTMENT\",\n\t\t\t\"changedQuantity\": 80,\n\t\t\t\"itemId\": \"NZT001\",\n\t\t\t\"productClass\": \"NEW\",\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\n\t\t\t\"shipNode\": \"nztest_littleton_dc\",\n\t\t\t\"type\": \"ONHAND\",\n\t\t\t\"unitOfMeasure\": \"EACH\"\n\t\t}\n\t\t]\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/supplies",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"supplies"
+							]
+						},
+						"description": "#Supply - Sync\n\nSync supply. See Documentation for API Detail\n\nhttps://developer.ibm.com/api/view/inventoryvis-prod:inventory-visibility:title-IBM_Inventory_Visibility_APIs#id76464 "
+					},
+					"response": []
+				},
 				{
 					"name": "Supply - Sync",
 					"request": {
@@ -230,110 +449,6 @@
 								"{{tenantID}}",
 								"{{apiVersion}}",
 								"supplies"
-							]
-						},
-						"description": "#Supply - Sync\n\nSync supply. See Documentation for API Detail\n\nhttps://developer.ibm.com/api/view/inventoryvis-prod:inventory-visibility:title-IBM_Inventory_Visibility_APIs#id76464 "
-					},
-					"response": []
-				},
-				{
-					"name": "Supply - Adjust",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{bearerToken_supplies}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\t\"supplies\": [\r\n\t\t{\r\n\t\t\t\"adjustmentReason\": \"RECEIVING\",\r\n\t\t\t\"changedQuantity\": 100.0,\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT001\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"nztest_littleton_dc\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T18:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t},{\r\n\t\t\t\"adjustmentReason\": \"SHIPMENT\",\r\n\t\t\t\"changedQuantity\": -1.0,\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT002\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"nztest_littleton_dc\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t},{\r\n\t\t\t\"adjustmentReason\": \"SHIPMENT\",\r\n\t\t\t\"changedQuantity\": -1.0,\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT003\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"nztest_littleton_dc\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t}\r\n\t\t]\r\n}"
-						},
-						"url": {
-							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/supplies",
-							"protocol": "https",
-							"host": [
-								"{{hostname}}"
-							],
-							"path": [
-								"{{applicationName}}",
-								"{{tenantID}}",
-								"{{apiVersion}}",
-								"supplies"
-							]
-						},
-						"description": "#Supply - Sync\n\nSync supply. See Documentation for API Detail\n\nhttps://developer.ibm.com/api/view/inventoryvis-prod:inventory-visibility:title-IBM_Inventory_Visibility_APIs#id76464 "
-					},
-					"response": []
-				},
-				{
-					"name": "Supply - Get",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{bearerToken_supplies}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\t\"supplies\": [\r\n\t\t{\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT001\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"quantity\": 100.0,\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"Matrix-Store-001\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t},{\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT002\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"quantity\": 200.0,\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"Matrix-Store-001\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t},{\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT003\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"quantity\": 300.0,\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"Matrix-Store-001\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t}\r\n\t\t]\r\n}"
-						},
-						"url": {
-							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/supplies?itemId=NZT001&unitOfMeasure=EACH&productClass=NEW&shipNode=nztest_littleton_dc",
-							"protocol": "https",
-							"host": [
-								"{{hostname}}"
-							],
-							"path": [
-								"{{applicationName}}",
-								"{{tenantID}}",
-								"{{apiVersion}}",
-								"supplies"
-							],
-							"query": [
-								{
-									"key": "itemId",
-									"value": "NZT001"
-								},
-								{
-									"key": "unitOfMeasure",
-									"value": "EACH"
-								},
-								{
-									"key": "productClass",
-									"value": "NEW"
-								},
-								{
-									"key": "shipNode",
-									"value": "nztest_littleton_dc"
-								}
 							]
 						},
 						"description": "#Supply - Sync\n\nSync supply. See Documentation for API Detail\n\nhttps://developer.ibm.com/api/view/inventoryvis-prod:inventory-visibility:title-IBM_Inventory_Visibility_APIs#id76464 "
@@ -412,7 +527,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"supplies\": [\r\n\t\t{\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT001\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"quantity\": 100.0,\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"Matrix-Store-001\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t},{\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT002\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"quantity\": 200.0,\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"Matrix-Store-001\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t},{\r\n\t\t\t\"eta\": \"1900-01-01T00:00:00Z\",\r\n\t\t\t\"itemId\": \"NZT003\",\r\n\t\t\t\"lineReference\": \" \",\r\n\t\t\t\"productClass\": \"NEW\",\r\n\t\t\t\"quantity\": 300.0,\r\n\t\t\t\"reference\": \" \",\r\n\t\t\t\"referenceType\": \" \",\r\n\t\t\t\"segment\": \" \",\r\n\t\t\t\"segmentType\": \" \",\r\n\t\t\t\"shipByDate\": \"2500-01-01T00:00:00Z\",\r\n\t\t\t\"shipNode\": \"Matrix-Store-001\",\r\n\t\t\t\"sourceTs\": \"2018-10-29T17:14:37-04:00\",\r\n\t\t\t\"tagNumber\": \" \",\r\n\t\t\t\"type\": \"ONHAND\",\r\n\t\t\t\"unitOfMeasure\": \"EACH\"\r\n\t\t}\r\n\t\t]\r\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/demands?itemId=NZT001&unitOfMeasure=EACH&productClass=NEW&shipNode=nztest_littleton_dc",
@@ -446,6 +561,142 @@
 							]
 						},
 						"description": "#Supply - Sync\n\nSync supply. See Documentation for API Detail\n\nhttps://developer.ibm.com/api/view/inventoryvis-prod:inventory-visibility:title-IBM_Inventory_Visibility_APIs#id76464 "
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "10 DistributionGroups",
+			"item": [
+				{
+					"name": "DistributionGroup - Set",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_configuration/distributionGroups}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"shipNodes\": [{\n\t\t\"shipNode\": \"latest_madrid_dc\"\n\t}]\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroupstest_dallas_dg",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"distributionGroups",
+								test_dallas_dg"
+							]
+						},
+						"description": "DistributionGroup - Set"
+					},
+					"response": []
+				},
+				{
+					"name": "DistributionGroup - Get List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_configuration/distributionGroups}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroups",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"distributionGroups"
+							]
+						},
+						"description": "Add or Update a ShipNode\t"
+					},
+					"response": []
+				},
+				{
+					"name": "DistributionGroup - Get Detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_configuration/distributionGroups}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroupstest_dallas_dg",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"distributionGroups",
+								test_dallas_dg"
+							]
+						},
+						"description": "Add or Update a ShipNode\t"
 					},
 					"response": []
 				}
@@ -571,43 +822,43 @@
 	],
 	"variable": [
 		{
-			"id": "abb4ccfc-aac1-4257-a277-2074af68d21c",
+			"id": "06d35e13-6477-4f20-bfa7-eafd71318bfc",
 			"key": "tenantID",
-			"value": "Enter your tenant id",
+			"value": "42dd13f4",
 			"type": "string"
 		},
 		{
-			"id": "91fe442f-b23f-4f89-a01f-d6c456176e28",
+			"id": "6a5f8c84-afea-4a71-bf35-391eab954beb",
 			"key": "hostname",
 			"value": "eu-api.watsoncommerce.ibm.com",
 			"type": "string"
 		},
 		{
-			"id": "022fc299-7d93-412a-86cc-6f7ee8afc079",
+			"id": "1e6bd06d-ee44-4c69-a5a4-af795e64c173",
 			"key": "client_id",
-			"value": "Enter your client id",
+			"value": "3inIXacADHofzdkxzQ5s4CSfpJuqaigG",
 			"type": "string"
 		},
 		{
-			"id": "3927627c-0588-436e-bd2b-b5de20e82c2f",
+			"id": "2afc6dd7-92fe-4c1a-a810-ed85e903ffeb",
 			"key": "client_secret",
-			"value": "Enter your client secret",
+			"value": "Cx2IeYRQahT1V4q6lkluZ1Ad8cxjRApS",
 			"type": "string"
 		},
 		{
-			"id": "7fbb3cc9-7376-429a-9548-daaaf8f11093",
+			"id": "71837fe0-f1cf-4856-a238-e4e5d858c7dd",
 			"key": "applicationName",
 			"value": "inventory",
 			"type": "string"
 		},
 		{
-			"id": "a15fbfee-cd01-4aa6-bc06-34f5a118f598",
+			"id": "09de8424-1f62-4891-8814-80d8aec53670",
 			"key": "apiVersion",
 			"value": "v1",
 			"type": "string"
 		},
 		{
-			"id": "1235ae07-e86b-47cc-a731-870b43f44cb3",
+			"id": "35ffd116-1d5c-477a-a12d-f15ea1963c47",
 			"key": "tokenUrlPostfix",
 			"value": "oauth2/token",
 			"type": "string"

@@ -219,7 +219,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/reservations?deliveryMethod=SHP&distributionGrouptest_dallas_dg&itemId=NZT001&lineId=1&productClass=NEW&shipNode=latest_madrid_dc",
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/reservations?deliveryMethod=SHP&distributionGroup=lauratest_dallas_dg&itemId=NZT001&lineId=1&productClass=NEW&shipNode=latest_madrid_dc",
 							"protocol": "https",
 							"host": [
 								"{{hostname}}"
@@ -237,7 +237,7 @@
 								},
 								{
 									"key": "distributionGroup",
-									"value": test_dallas_dg"
+									"value": "lauratest_dallas_dg"
 								},
 								{
 									"key": "itemId",
@@ -284,7 +284,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"lines\": [{\n\t\t\"deliveryMethod\": \"SHP\",\n        \"distributionGroup\": \test_dallas_dg\",\n        \"itemId\": \"NZT001\",\n        \"lineId\": \"1\",\n        \"productClass\": \"NEW\",\n        \"quantity\": 5.0,\n        \"shipNode\": \"latest_madrid_dc\",\n        \"unitOfMeasure\": \"EACH\"\n      }],\n\t\"reference\": \"REF1\",\n\t\"segment\": \" \",\n\t\"segmentType\": \" \",\n\t\"timeToExpire\": 15\n}"
+							"raw": "{\n\t\"lines\": [{\n\t\t\"deliveryMethod\": \"SHP\",\n        \"distributionGroup\": \"lauratest_dallas_dg\",\n        \"itemId\": \"NZT001\",\n        \"lineId\": \"1\",\n        \"productClass\": \"NEW\",\n        \"quantity\": 5.0,\n        \"shipNode\": \"latest_madrid_dc\",\n        \"unitOfMeasure\": \"EACH\"\n      }],\n\t\"reference\": \"REF1\",\n\t\"segment\": \" \",\n\t\"segmentType\": \" \",\n\t\"timeToExpire\": 15\n}"
 						},
 						"url": {
 							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/reservations",
@@ -595,7 +595,7 @@
 							"raw": "{\n\t\"shipNodes\": [{\n\t\t\"shipNode\": \"latest_madrid_dc\"\n\t}]\n}"
 						},
 						"url": {
-							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroupstest_dallas_dg",
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroups/lauratest_dallas_dg",
 							"protocol": "https",
 							"host": [
 								"{{hostname}}"
@@ -606,7 +606,7 @@
 								"{{apiVersion}}",
 								"configuration",
 								"distributionGroups",
-								test_dallas_dg"
+								"lauratest_dallas_dg"
 							]
 						},
 						"description": "DistributionGroup - Set"
@@ -682,7 +682,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroupstest_dallas_dg",
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroups/lauratest_dallas_dg",
 							"protocol": "https",
 							"host": [
 								"{{hostname}}"
@@ -693,7 +693,7 @@
 								"{{apiVersion}}",
 								"configuration",
 								"distributionGroups",
-								test_dallas_dg"
+								"lauratest_dallas_dg"
 							]
 						},
 						"description": "Add or Update a ShipNode\t"
@@ -822,43 +822,43 @@
 	],
 	"variable": [
 		{
-			"id": "06d35e13-6477-4f20-bfa7-eafd71318bfc",
+			"id": "8b655a1d-a283-4814-9e6f-840679ced301",
 			"key": "tenantID",
 			"value": "42dd13f4",
 			"type": "string"
 		},
 		{
-			"id": "6a5f8c84-afea-4a71-bf35-391eab954beb",
+			"id": "7f891e75-2dbd-4c0b-aaf2-e6754a4f3844",
 			"key": "hostname",
 			"value": "eu-api.watsoncommerce.ibm.com",
 			"type": "string"
 		},
 		{
-			"id": "1e6bd06d-ee44-4c69-a5a4-af795e64c173",
+			"id": "e3b0a310-35f1-4f02-9810-5a1f033318b7",
 			"key": "client_id",
 			"value": "3inIXacADHofzdkxzQ5s4CSfpJuqaigG",
 			"type": "string"
 		},
 		{
-			"id": "2afc6dd7-92fe-4c1a-a810-ed85e903ffeb",
+			"id": "1b3a1e4c-cbd6-48a2-a086-25ebc800ffa3",
 			"key": "client_secret",
 			"value": "Cx2IeYRQahT1V4q6lkluZ1Ad8cxjRApS",
 			"type": "string"
 		},
 		{
-			"id": "71837fe0-f1cf-4856-a238-e4e5d858c7dd",
+			"id": "052e9fff-78dd-4bc0-9779-b43c222582dc",
 			"key": "applicationName",
 			"value": "inventory",
 			"type": "string"
 		},
 		{
-			"id": "09de8424-1f62-4891-8814-80d8aec53670",
+			"id": "75af08f6-e384-410a-985e-27f479639a1d",
 			"key": "apiVersion",
 			"value": "v1",
 			"type": "string"
 		},
 		{
-			"id": "35ffd116-1d5c-477a-a12d-f15ea1963c47",
+			"id": "3c71e008-8ead-46ef-bf1e-db035d959614",
 			"key": "tokenUrlPostfix",
 			"value": "oauth2/token",
 			"type": "string"

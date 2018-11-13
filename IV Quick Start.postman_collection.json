@@ -1,11 +1,189 @@
 {
 	"info": {
-		"_postman_id": "76d53851-04ed-4b4f-98d3-eceb699f6823",
+		"_postman_id": "d1bcdc10-be33-4816-b037-18edb1153a38",
 		"name": "IV Quick Start",
 		"description": "#IV Quick Start collection\n\nCheck the \"Variables\" tab of the collectiont to validate if those vairables are correct. ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "10 DistributionGroups",
+			"item": [
+				{
+					"name": "DistributionGroup - Set",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_configuration/distributionGroups}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"shipNodes\": [{\n\t\t\"shipNode\": \"latest_madrid_dc\"\n\t}]\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroups/lauratest_dallas_dg",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"distributionGroups",
+								"lauratest_dallas_dg"
+							]
+						},
+						"description": "DistributionGroup - Set"
+					},
+					"response": []
+				},
+				{
+					"name": "DistributionGroup - Get List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_configuration/distributionGroups}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroups",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"distributionGroups"
+							]
+						},
+						"description": "Add or Update a ShipNode\t"
+					},
+					"response": []
+				},
+				{
+					"name": "DistributionGroup - Get Detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_configuration/distributionGroups}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroups/lauratest_bologna2_dg",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"distributionGroups",
+								"lauratest_bologna2_dg"
+							]
+						},
+						"description": "Add or Update a ShipNode\t"
+					},
+					"response": []
+				},
+				{
+					"name": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroups",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_configuration/distributionGroups}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"latitude\": 42.5492895,\r\n\t\"longitude\": -71.4723905\r\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroups",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"distributionGroups"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "16 Thresholds",
 			"item": [
@@ -182,121 +360,6 @@
 								"configuration",
 								"shipNodes",
 								"latest_madrid_dc"
-							]
-						},
-						"description": "Add or Update a ShipNode\t"
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "50 Reservation",
-			"item": [
-				{
-					"name": "Get Reservation",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{bearerToken_reservations}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/reservations?deliveryMethod=SHP&distributionGroup=lauratest_dallas_dg&itemId=NZT001&lineId=1&productClass=NEW&shipNode=latest_madrid_dc",
-							"protocol": "https",
-							"host": [
-								"{{hostname}}"
-							],
-							"path": [
-								"{{applicationName}}",
-								"{{tenantID}}",
-								"{{apiVersion}}",
-								"reservations"
-							],
-							"query": [
-								{
-									"key": "deliveryMethod",
-									"value": "SHP"
-								},
-								{
-									"key": "distributionGroup",
-									"value": "lauratest_dallas_dg"
-								},
-								{
-									"key": "itemId",
-									"value": "NZT001"
-								},
-								{
-									"key": "lineId",
-									"value": "1"
-								},
-								{
-									"key": "productClass",
-									"value": "NEW"
-								},
-								{
-									"key": "shipNode",
-									"value": "latest_madrid_dc"
-								}
-							]
-						},
-						"description": "Add or Update a ShipNode\t"
-					},
-					"response": []
-				},
-				{
-					"name": "Create Reservation",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{bearerToken_reservations}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"lines\": [{\n\t\t\"deliveryMethod\": \"SHP\",\n        \"distributionGroup\": \"lauratest_dallas_dg\",\n        \"itemId\": \"NZT001\",\n        \"lineId\": \"1\",\n        \"productClass\": \"NEW\",\n        \"quantity\": 5.0,\n        \"shipNode\": \"latest_madrid_dc\",\n        \"unitOfMeasure\": \"EACH\"\n      }],\n\t\"reference\": \"REF1\",\n\t\"segment\": \" \",\n\t\"segmentType\": \" \",\n\t\"timeToExpire\": 15\n}"
-						},
-						"url": {
-							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/reservations",
-							"protocol": "https",
-							"host": [
-								"{{hostname}}"
-							],
-							"path": [
-								"{{applicationName}}",
-								"{{tenantID}}",
-								"{{apiVersion}}",
-								"reservations"
 							]
 						},
 						"description": "Add or Update a ShipNode\t"
@@ -567,17 +630,85 @@
 			]
 		},
 		{
-			"name": "10 DistributionGroups",
+			"name": "50 Reservation",
 			"item": [
 				{
-					"name": "DistributionGroup - Set",
+					"name": "Get Reservation",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_configuration/distributionGroups}}",
+									"value": "{{bearerToken_reservations}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/reservations?deliveryMethod=SHP&distributionGroup=lauratest_dallas_dg&itemId=NZT001&lineId=1&productClass=NEW&shipNode=latest_madrid_dc",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"reservations"
+							],
+							"query": [
+								{
+									"key": "deliveryMethod",
+									"value": "SHP"
+								},
+								{
+									"key": "distributionGroup",
+									"value": "lauratest_dallas_dg"
+								},
+								{
+									"key": "itemId",
+									"value": "NZT001"
+								},
+								{
+									"key": "lineId",
+									"value": "1"
+								},
+								{
+									"key": "productClass",
+									"value": "NEW"
+								},
+								{
+									"key": "shipNode",
+									"value": "latest_madrid_dc"
+								}
+							]
+						},
+						"description": "Add or Update a ShipNode\t"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Reservation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_reservations}}",
 									"type": "string"
 								}
 							]
@@ -586,60 +717,16 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"shipNodes\": [{\n\t\t\"shipNode\": \"latest_madrid_dc\"\n\t}]\n}"
-						},
-						"url": {
-							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroups/lauratest_dallas_dg",
-							"protocol": "https",
-							"host": [
-								"{{hostname}}"
-							],
-							"path": [
-								"{{applicationName}}",
-								"{{tenantID}}",
-								"{{apiVersion}}",
-								"configuration",
-								"distributionGroups",
-								"lauratest_dallas_dg"
-							]
-						},
-						"description": "DistributionGroup - Set"
-					},
-					"response": []
-				},
-				{
-					"name": "DistributionGroup - Get List",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{bearerToken_configuration/distributionGroups}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
 								"type": "text",
 								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n\t\"lines\": [{\n\t\t\"deliveryMethod\": \"SHP\",\n        \"distributionGroup\": \"lauratest_dallas_dg\",\n        \"itemId\": \"NZT001\",\n        \"lineId\": \"1\",\n        \"productClass\": \"NEW\",\n        \"quantity\": 5.0,\n        \"shipNode\": \"latest_madrid_dc\",\n        \"unitOfMeasure\": \"EACH\"\n      }],\n\t\"reference\": \"REF1\",\n\t\"segment\": \" \",\n\t\"segmentType\": \" \",\n\t\"timeToExpire\": 15\n}"
 						},
 						"url": {
-							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroups",
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/reservations",
 							"protocol": "https",
 							"host": [
 								"{{hostname}}"
@@ -648,41 +735,46 @@
 								"{{applicationName}}",
 								"{{tenantID}}",
 								"{{apiVersion}}",
-								"configuration",
-								"distributionGroups"
+								"reservations"
 							]
 						},
 						"description": "Add or Update a ShipNode\t"
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "60_availability",
+			"item": [
 				{
-					"name": "DistributionGroup - Get Detail",
+					"name": "Node Availability - Get",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_configuration/distributionGroups}}",
+									"value": "{{bearerToken_availability/node}}",
 									"type": "string"
 								}
 							]
 						},
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
+								"name": "Content-Type",
 								"type": "text",
 								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\r\n  \"lines\": [{\r\n    \"deliveryMethod\": \"SHP\",\r\n    \"itemId\": \"NZT001\",\r\n    \"lineId\": \"1\",\r\n    \"productClass\": \"NEW\",\r\n    \"shipNodes\": [ {\r\n        \"shipNode\": \"dc_dallas\"}],\r\n    \"unitOfMeasure\": \"EACH\"\r\n  }],\r\n  \"segment\": \" \",\r\n  \"segmentType\": \" \"\r\n}"
 						},
 						"url": {
-							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroups/lauratest_dallas_dg",
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/availability/node",
 							"protocol": "https",
 							"host": [
 								"{{hostname}}"
@@ -691,12 +783,55 @@
 								"{{applicationName}}",
 								"{{tenantID}}",
 								"{{apiVersion}}",
-								"configuration",
-								"distributionGroups",
-								"lauratest_dallas_dg"
+								"availability",
+								"node"
 							]
 						},
-						"description": "Add or Update a ShipNode\t"
+						"description": "#Supply - Sync\n\nSync supply. See Documentation for API Detail\n\nhttps://developer.ibm.com/api/view/inventoryvis-prod:inventory-visibility:title-IBM_Inventory_Visibility_APIs#id76464 "
+					},
+					"response": []
+				},
+				{
+					"name": "DG Availability",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_availability/network}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"distributionGroupId\": \"dg_north_america\",\r\n  \"lines\": [{\r\n    \"deliveryMethod\": \"SHP\",\r\n    \"itemId\": \"NZT001\",\r\n    \"lineId\": \"1\",\r\n    \"productClass\": \"NEW\",\r\n    \"unitOfMeasure\": \"EACH\"\r\n  }],\r\n  \"segment\": \" \",\r\n  \"segmentType\": \" \"\r\n}\r\n\r\n"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/availability/network",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"availability",
+								"network"
+							]
+						},
+						"description": "#Supply - Sync\n\nSync supply. See Documentation for API Detail\n\nhttps://developer.ibm.com/api/view/inventoryvis-prod:inventory-visibility:title-IBM_Inventory_Visibility_APIs#id76464 "
 					},
 					"response": []
 				}
@@ -798,6 +933,7 @@
 					"    getAndSetApiToken(\"configuration/shipNodes\");",
 					"    getAndSetApiToken(\"demands\");",
 					"    getAndSetApiToken(\"availability/network\");",
+					"    getAndSetApiToken(\"availability/node\");",
 					"    getAndSetApiToken(\"configuration/distributionGroups\");",
 					"    getAndSetApiToken(\"reservations\");",
 					"    getAndSetApiToken(\"configuration/thresholds\");",
@@ -824,7 +960,7 @@
 		{
 			"id": "8b655a1d-a283-4814-9e6f-840679ced301",
 			"key": "tenantID",
-			"value": "42dd13f4",
+			"value": "Enter your Tenant ID",
 			"type": "string"
 		},
 		{
@@ -836,13 +972,13 @@
 		{
 			"id": "e3b0a310-35f1-4f02-9810-5a1f033318b7",
 			"key": "client_id",
-			"value": "3inIXacADHofzdkxzQ5s4CSfpJuqaigG",
+			"value": "Enter you Client ID",
 			"type": "string"
 		},
 		{
 			"id": "1b3a1e4c-cbd6-48a2-a086-25ebc800ffa3",
 			"key": "client_secret",
-			"value": "Cx2IeYRQahT1V4q6lkluZ1Ad8cxjRApS",
+			"value": "Enter your Client Secret",
 			"type": "string"
 		},
 		{

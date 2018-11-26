@@ -7,6 +7,106 @@
 	},
 	"item": [
 		{
+			"name": "05_Settings",
+			"item": [
+				{
+					"name": "Get Settings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_configuration/settings}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/settings",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"settings"
+							]
+						},
+						"description": "Add or Update a ShipNode\t"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Settings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_configuration/settings}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/settings?defaultExpirationMinutes=120&reservations=",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"settings"
+							],
+							"query": [
+								{
+									"key": "defaultExpirationMinutes",
+									"value": "120"
+								},
+								{
+									"key": "reservations",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "10 DistributionGroups",
 			"item": [
 				{
@@ -163,7 +263,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"latitude\": 42.5492895,\r\n\t\"longitude\": -71.4723905\r\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroups",
@@ -227,6 +327,49 @@
 							]
 						},
 						"description": "Add or Update a ShipNode\t"
+					},
+					"response": []
+				},
+				{
+					"name": "Threshold - Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken_configuration/thresholds}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"high\": 50.0,\n  \"low\": 5.0,\n  \"medium\": 20.0\n}"
+						},
+						"url": {
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/thresholds",
+							"protocol": "https",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"{{applicationName}}",
+								"{{tenantID}}",
+								"{{apiVersion}}",
+								"configuration",
+								"thresholds"
+							]
+						},
+						"description": "Update thresholds"
 					},
 					"response": []
 				}
@@ -398,7 +541,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/supplies?itemId=NZT001&unitOfMeasure=EACH&productClass=NEW&shipNode=nztest_littleton_dc",
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/supplies?itemId=ANZT001&unitOfMeasure=EACH&productClass=NEW&shipNode=store_chicago",
 							"protocol": "https",
 							"host": [
 								"{{hostname}}"
@@ -412,7 +555,7 @@
 							"query": [
 								{
 									"key": "itemId",
-									"value": "NZT001"
+									"value": "ANZT001"
 								},
 								{
 									"key": "unitOfMeasure",
@@ -424,7 +567,7 @@
 								},
 								{
 									"key": "shipNode",
-									"value": "nztest_littleton_dc"
+									"value": "store_chicago"
 								}
 							]
 						},
@@ -658,7 +801,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/reservations?deliveryMethod=SHP&distributionGroup=lauratest_dallas_dg&itemId=NZT001&lineId=1&productClass=NEW&shipNode=latest_madrid_dc",
+							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/reservations?deliveryMethod=SHP&distributionGroup=DG_SUP&itemId=NZT001&lineId=1&productClass=",
 							"protocol": "https",
 							"host": [
 								"{{hostname}}"
@@ -676,7 +819,7 @@
 								},
 								{
 									"key": "distributionGroup",
-									"value": "lauratest_dallas_dg"
+									"value": "DG_SUP"
 								},
 								{
 									"key": "itemId",
@@ -688,11 +831,7 @@
 								},
 								{
 									"key": "productClass",
-									"value": "NEW"
-								},
-								{
-									"key": "shipNode",
-									"value": "latest_madrid_dc"
+									"value": ""
 								}
 							]
 						},
@@ -713,7 +852,7 @@
 								}
 							]
 						},
-						"method": "PUT",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -723,7 +862,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"lines\": [{\n\t\t\"deliveryMethod\": \"SHP\",\n        \"distributionGroup\": \"lauratest_dallas_dg\",\n        \"itemId\": \"NZT001\",\n        \"lineId\": \"1\",\n        \"productClass\": \"NEW\",\n        \"quantity\": 5.0,\n        \"shipNode\": \"latest_madrid_dc\",\n        \"unitOfMeasure\": \"EACH\"\n      }],\n\t\"reference\": \"REF1\",\n\t\"segment\": \" \",\n\t\"segmentType\": \" \",\n\t\"timeToExpire\": 15\n}"
+							"raw": "{\n\t\"lines\": [{\n\t\t\"deliveryMethod\": \"SHP\",\n        \"distributionGroup\": \"DG_SUP\",\n        \"itemId\": \"NZT001\",\n        \"lineId\": \"1\",\n        \"productClass\": \"NEW\",\n        \"quantity\": 5.0,\n        \"shipNode\": \"Node_SUP\",\n        \"unitOfMeasure\": \"EACH\"\n      }],\n\t\"reference\": \"REF1\",\n\t\"segment\": \" \",\n\t\"segmentType\": \" \",\n\t\"timeToExpire\": 15\n}"
 						},
 						"url": {
 							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/reservations",
@@ -833,7 +972,67 @@
 						},
 						"description": "#Supply - Sync\n\nSync supply. See Documentation for API Detail\n\nhttps://developer.ibm.com/api/view/inventoryvis-prod:inventory-visibility:title-IBM_Inventory_Visibility_APIs#id76464 "
 					},
-					"response": []
+					"response": [
+						{
+							"name": "DG Availability",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"distributionGroupId\": \"\",\r\n  \"lines\": [{\r\n    \"deliveryMethod\": \"SHP\",\r\n    \"itemId\": \"Item_SUP\",\r\n    \"lineId\": \"1\",\r\n    \"productClass\": \"NEW\",\r\n    \"unitOfMeasure\": \"EACH\"\r\n  }],\r\n  \"segment\": \" \",\r\n  \"segmentType\": \" \"\r\n}\r\n"
+								},
+								"url": {
+									"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/availability/network",
+									"protocol": "https",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"{{applicationName}}",
+										"{{tenantID}}",
+										"{{apiVersion}}",
+										"availability",
+										"network"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "520"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-transform, max-age=60"
+								},
+								{
+									"key": "Content-Language",
+									"value": "en-US"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Nov 2018 18:57:03 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"lines\": [\n        {\n            \"lineId\": \"1\",\n            \"networkAvailabilities\": [\n                {\n                    \"totalAvailableQuantity\": 123,\n                    \"onhandAvailableQuantity\": 123,\n                    \"onhandEarliestShipTs\": \"2018-11-19T18:57:04.214Z\",\n                    \"onhandLatestShipTs\": \"2018-11-19T18:57:04.214Z\",\n                    \"futureAvailableQuantity\": 0,\n                    \"futureEarliestShipTs\": \"2500-01-01T00:00:00.000Z\",\n                    \"futureLatestShipTs\": \"2500-01-01T00:00:00.000Z\",\n                    \"earliestShipTs\": \"2018-11-19T18:57:04.214Z\",\n                    \"distributionGroupId\": \"DG_SUP\",\n                    \"alertLevel\": \"0\",\n                    \"alertQuantity\": 2147483647,\n                    \"thresholdQuantity\": 2147483647,\n                    \"thresholdLevel\": \"0\"\n                }\n            ]\n        }\n    ]\n}"
+						}
+					]
 				}
 			]
 		}
@@ -960,7 +1159,7 @@
 		{
 			"id": "8b655a1d-a283-4814-9e6f-840679ced301",
 			"key": "tenantID",
-			"value": "Enter your Tenant ID",
+			"value": "Put your tenant id",
 			"type": "string"
 		},
 		{
@@ -972,13 +1171,13 @@
 		{
 			"id": "e3b0a310-35f1-4f02-9810-5a1f033318b7",
 			"key": "client_id",
-			"value": "Enter you Client ID",
+			"value": "Put your client id",
 			"type": "string"
 		},
 		{
 			"id": "1b3a1e4c-cbd6-48a2-a086-25ebc800ffa3",
 			"key": "client_secret",
-			"value": "Enter your Client Secret",
+			"value": "Put your client secret",
 			"type": "string"
 		},
 		{

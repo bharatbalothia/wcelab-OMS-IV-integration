@@ -2,13 +2,13 @@
 
 ## Documentations
 
-IV Documentation  
+- IV Documentation  
 https://www.ibm.com/support/knowledgecenter/SSSMTK/landing/welcome.html
 
-OMS 9.5 IV Integration  
+- OMS 9.5 IV Integration  
 https://www.ibm.com/support/knowledgecenter/en/SS6PEW_9.5.0/com.ibm.help.omsiv.integ.doc/c_OMIV_Integration.html
 
-IV Api Documentation  
+- IV Api Documentation  
 https://developer.ibm.com/api/view/inventoryvis-prod:inventory-visibility:title-IBM_Inventory_Visibility_APIs#doc
 
 ## Shipnode setup
@@ -19,18 +19,18 @@ Currently IV Shipnodes must be setup with the steps below. The first step only n
 
 
 1. Setup Settings and Thresholds
-   1. Setup Setting
-        - Use [Postman Requests](#h2-postman) to check if "Setting" is set. If not, you can PATCH the "setting". You only need to do it once per tenant. 
+   1. Setup Settings
+        - Use [Postman Quickstart](#h2-postman) to check if "Settings" is set. If not, you can PATCH the "Settings". You only need to do it once per tenant. 
    ![alt text](/README_images/setting_patch.PNG "Patch setting if needed")
    1. Setup Thresholds
-         - Use [Postman requests](#h2-postman) to check if Threshold is set. If not, you can PUT threshold. You only need to do it once per tenant.
+         - Use [Postman Quickstart](#h2-postman) to check if Threshold is set. If not, you can PUT threshold. You only need to do it once per tenant.
    ![alt text](/README_images/threshold_put.PNG "Put threshold if needed")
 2. Create Shipnode. You can use the IV UI to create shipnode or you can create the shipnode in Postman
 ![alt text](/README_images/ui_shipnode_list.PNG "Put threshold if needed")
 3. Assign the new shipnode to at least one Distribution Group. Easiest way would be doing this in UI.
 
 
-## IV Quick Start with Postman <a name="h2-postman"></a>
+## Postman Quickstart <a name="h2-postman"></a>
 
 1. Install postman.
 2. Import the "IV Quick Start Collection"
@@ -46,4 +46,3 @@ Currently IV Shipnodes must be setup with the steps below. The first step only n
    ![alt text](/README_images/tokenexp_update.PNG "delete token expiration time to reload tokens")
    
   
- 

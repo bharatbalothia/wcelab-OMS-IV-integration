@@ -1,0 +1,89 @@
+Prerequisites
+1.	IBM JDK minimum version – 7.0.9.10 for both Sterling Order Management and WebSphere Application Server
+2.	Install Sterling Order Management V9.5 and apply latest fix pack (FP26) 
+3.	Onboard the tenants to the Inventory Visibility. Configure ship nodes, distribution groups, thresholds (if any) for the tenant(inv org that is going to be activated ).
+4.	Get the tenant ID, client ID and client secret
+
+
+https://www.ibm.com/support/knowledgecenter/en/SS6PEW_9.5.0/com.ibm.help.omsiv.integ.doc/c_OMIV_Integration.html
+
+Follow the above link for OMS-Inventory Visibility Integration.Below are the brief steps
+
+Integration Steps
+1.	Merge the sample templates of Inventory Visibility with the existing template files.
+
+2.	Run the activation script for the inventory org  from the <INSTALL_DIR>/bin directory. Provide the enterprise code(inv org), client ID, client secret, tenant ID and logfile name 
+
+Note: The inv org should already be present in the Sterling Order Management.
+
+3.	Remove any start files (files with the extension .xml.restart) from the <INSTALL_DIR>/repository/factorysetup/iv_integration/install/ directory. 
+
+4.	Add the queue connection properties in the customer_overrides.properties file (App and Agent)
+
+5.	Build the resources jar from the <INSTALL_DIR>/bin directory.(irrespective of customer_overrides.properties path)
+
+6.	Build EAR from the <INSTALL_DIR>/bin directory.
+
+7.	The below services will be created when the inventory org is activated.
+
+Under Applications Manager > Applications > Applications Platform (inventory org) > Process Modeling > General Repository > Service Definitions > Inventory Visibility Adapter
+
+<inventory_org>_IVAdjustDemandAsynchronously
+<inventory_org>_IVAdjustSupplyAsynchronously
+<inventory_org>_IVAdjustDemandSynchronously
+<inventory_org>_IVAdjustSupplySynchronously
+<inventory_org>_IVSyncDemandService
+<inventory_org>_IVSyncSupplyService
+<inventory_org>_IVReadCachedAvailability
+
+8.	From the Sterling configurator, enable the appropriate events to call actions and corresponding services.
+
+•	To enable the events, from the Applications Manager, select Applications > Applications Platform (DEFAULT) > Process Modeling > General Repository > Transactions
+
+•	To access the Inventory Change events, click Inventory Change > Events (DEFAULT)
+
+•	Activate the DEMAND_CHANGE and SUPPLY_CHANGE_LIST events (DEFAULT)
+
+•	To access the Inventory Snapshot events, click Inventory Snapshot > Events (DEFAULT)
+
+•	Activate the DEMAND_SYNC and SUPPLY_SYNC events (DEFAULT)
+
+•	Open the Applications Manager, select Applications > Applications Platform (<inventory_org>) > Process Modeling >  General Repository > Actions > Inventory Visibility Adapter
+
+•	Add the Inventory Visibility Adapter > DemandChange action (<inventory_org>) to the above activated DEMAND_CHANGE event (DEFAULT)
+
+•	Add the Inventory Visibility Adapter > SupplyChange action (<inventory_org>) to the above activated SUPPLY_CHANGE_LIST event (DEFAULT)
+
+•	Add the Inventory Visibility Adapter > DemandSync action (<inventory_org>) to the above activated DEMAND_SYNC event (DEFAULT)
+
+•	Add the Inventory Visibility Adapter > SupplySyncaction (<inventory_org>) to the above activated SUPPLY_SYNC event (DEFAULT)
+
+9.	Configure the inventory snapshot agents.
+•	Applications Manager, select Applications > Applications Platform (DEFAULT) > Process Modeling > General Repository > Transactions > Inventory Snapshot 
+•	Under Time Triggered configure the INV_SUPPLY_SYNC and INV_DEMAND_SYNC criteria with agent name, connection and queue details.
+
+	Testing Inventory Visibility APIs
+
+	Adding SSL certificate
+
+1.	Add the Inventory visibility SSL certificate to the Java keystore of OMS.
+2.	Download the SSL certificate from https://eu-api.watsoncommerce.ibm.com/ using the Mozilla browser and save it with .crt extension
+3.	Import the certificate to the OMS java keystore using the below command.(eg:-watsoncommerceibmcom.crt)
+<oms_install_directory>/jdk/bin/keytool -import -alias watsoncert -keystore <oms_install_directory>/jdk/jre/lib/security/cacerts -file <certificate_directory>/-watsoncommerceibmcom.crt
+4.	Provide the default password - changeit
+5.	When prompted to trust the certificate, type ‘yes’
+6.	Verify if the certificate is added properly using the below command.
+echo 'changeit' | keytool -list -alias watsoncert -v -keystore $(find <oms_install_directory>/jdk -name cacerts) | grep 'Owner:'
+7.	The output of the above command should be
+Owner: CN=*.watsoncommerce.ibm.com, OU=Watson Customer Engagement, O=IBM Danmark Aps, L=Ballerup, C=DK
+8.	If any synchronous calls are made from OMS to inventory instance, add the certificate to WebSphere Application Server Java keystore path by following the above steps. 
+
+Adding Java TLS properties in startup scripts
+
+1.	Add the below java properties in the startIntegrationServer.sh and startAgentServer.sh scripts of OMS
+-Dcom.ibm.jsse2.overrideDefaultTLS=true
+-Dhttps.protocols=TLSv1.2
+-Djdk.tls.client.protocols=TLSv1.2
+ 
+
+2.	For any synchronous calls, add the same properties in the java arguments of the WebSphere Application Server Console and restart the application server. 

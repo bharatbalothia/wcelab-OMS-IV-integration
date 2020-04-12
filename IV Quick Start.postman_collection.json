@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d1bcdc10-be33-4816-b037-18edb1153a38",
+		"_postman_id": "936292a8-02e7-4b1a-b924-e00e9328d200",
 		"name": "IV Quick Start",
 		"description": "#IV Quick Start collection\n\nCheck the \"Variables\" tab of the collectiont to validate if those vairables are correct. ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -17,7 +17,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_configuration/settings}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -30,10 +30,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/settings",
 							"protocol": "https",
@@ -60,7 +56,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_configuration/settings}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -104,7 +100,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "10 DistributionGroups",
@@ -117,7 +114,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_configuration/distributionGroups}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -161,7 +158,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_configuration/distributionGroups}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -174,10 +171,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroups",
 							"protocol": "https",
@@ -204,7 +197,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_configuration/distributionGroups}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -217,10 +210,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroups/lauratest_bologna2_dg",
 							"protocol": "https",
@@ -248,7 +237,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_configuration/distributionGroups}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -261,10 +250,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/distributionGroups",
 							"protocol": "https",
@@ -282,7 +267,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "16 Thresholds",
@@ -295,7 +281,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_configuration/thresholds}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -308,10 +294,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/thresholds",
 							"protocol": "https",
@@ -338,7 +320,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_configuration/thresholds}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -373,7 +355,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "20 ShipNodes",
@@ -386,7 +369,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_configuration/shipNodes}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -399,10 +382,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/shipNodes",
 							"protocol": "https",
@@ -429,7 +408,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_configuration/shipNodes}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -442,10 +421,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/configuration/shipNodes/nztest_littleton_dc",
 							"protocol": "https",
@@ -473,7 +448,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_configuration/shipNodes}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -509,7 +484,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "30 Supplies",
@@ -522,7 +498,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_supplies}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -536,10 +512,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/supplies?itemId=ANZT001&unitOfMeasure=EACH&productClass=NEW&shipNode=store_chicago",
 							"protocol": "https",
@@ -583,7 +555,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_supplies}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -626,7 +598,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_supplies}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -661,7 +633,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "40 Demand",
@@ -674,7 +647,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_demands}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -717,7 +690,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_demands}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -731,10 +704,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/demands?itemId=NZT001&unitOfMeasure=EACH&productClass=NEW&shipNode=nztest_littleton_dc",
 							"protocol": "https",
@@ -770,7 +739,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "50 Reservation",
@@ -783,7 +753,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_reservations}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -796,10 +766,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://{{hostname}}/{{applicationName}}/{{tenantID}}/{{apiVersion}}/reservations?deliveryMethod=SHP&distributionGroup=DG_SUP&itemId=NZT001&lineId=1&productClass=",
 							"protocol": "https",
@@ -847,7 +813,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_reservations}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -881,7 +847,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "60_availability",
@@ -894,7 +861,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_availability/node}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -938,7 +905,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{bearerToken_availability/network}}",
+									"value": "{{bearerToken_configuration}}",
 									"type": "string"
 								}
 							]
@@ -1034,7 +1001,8 @@
 						}
 					]
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"event": [
@@ -1128,15 +1096,19 @@
 					"",
 					"    console.log(\"token needs refresh [exp: \" + tokenExpirationTime + \" | now: \" + timeInSecondNow + \"]\");",
 					"    ",
-					"    getAndSetApiToken(\"supplies\");",
-					"    getAndSetApiToken(\"configuration/shipNodes\");",
-					"    getAndSetApiToken(\"demands\");",
-					"    getAndSetApiToken(\"availability/network\");",
-					"    getAndSetApiToken(\"availability/node\");",
-					"    getAndSetApiToken(\"configuration/distributionGroups\");",
-					"    getAndSetApiToken(\"reservations\");",
-					"    getAndSetApiToken(\"configuration/thresholds\");",
-					"    getAndSetApiToken(\"configuration/settings\");",
+					"    // IV changed to only have one token for all service. We will store it as configuration",
+					"    ",
+					"    getAndSetApiToken(\"configuration\");",
+					"    ",
+					"    //getAndSetApiToken(\"supplies\");",
+					"    //getAndSetApiToken(\"configuration/shipNodes\");",
+					"    //getAndSetApiToken(\"demands\");",
+					"    //getAndSetApiToken(\"availability/network\");",
+					"    //getAndSetApiToken(\"availability/node\");",
+					"    //getAndSetApiToken(\"configuration/distributionGroups\");",
+					"    //getAndSetApiToken(\"reservations\");",
+					"    //getAndSetApiToken(\"configuration/thresholds\");",
+					"    //getAndSetApiToken(\"configuration/settings\");",
 					"} else {",
 					"    console.log(\"token still valid [exp: \" + tokenExpirationTime + \" | now: \" + timeInSecondNow + \"]\");",
 					"}",
@@ -1157,46 +1129,47 @@
 	],
 	"variable": [
 		{
-			"id": "8b655a1d-a283-4814-9e6f-840679ced301",
+			"id": "0555c718-26e1-4a21-9cef-4b7176657261",
 			"key": "tenantID",
 			"value": "Put your tenant id",
 			"type": "string"
 		},
 		{
-			"id": "7f891e75-2dbd-4c0b-aaf2-e6754a4f3844",
+			"id": "e2451458-61be-4852-886e-5506ec48a17d",
 			"key": "hostname",
 			"value": "eu-api.watsoncommerce.ibm.com",
 			"type": "string"
 		},
 		{
-			"id": "e3b0a310-35f1-4f02-9810-5a1f033318b7",
+			"id": "2f3076af-d80b-45af-9197-e85d1f104914",
 			"key": "client_id",
 			"value": "Put your client id",
 			"type": "string"
 		},
 		{
-			"id": "1b3a1e4c-cbd6-48a2-a086-25ebc800ffa3",
+			"id": "f9a69ac0-8b80-4b82-aeec-1ba202f6ceeb",
 			"key": "client_secret",
 			"value": "Put your client secret",
 			"type": "string"
 		},
 		{
-			"id": "052e9fff-78dd-4bc0-9779-b43c222582dc",
+			"id": "752b18ef-ed18-4d52-a1a3-82b80dc6248f",
 			"key": "applicationName",
 			"value": "inventory",
 			"type": "string"
 		},
 		{
-			"id": "75af08f6-e384-410a-985e-27f479639a1d",
+			"id": "4559dc82-bc33-4aa2-ad2a-3f259dae674f",
 			"key": "apiVersion",
 			"value": "v1",
 			"type": "string"
 		},
 		{
-			"id": "3c71e008-8ead-46ef-bf1e-db035d959614",
+			"id": "3719db89-173c-4a6e-91f9-e12454a11644",
 			"key": "tokenUrlPostfix",
 			"value": "oauth2/token",
 			"type": "string"
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
